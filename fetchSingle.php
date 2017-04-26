@@ -120,7 +120,6 @@ function fetchNote($id)
             'image_src' => $row->find('.list_image .list_source .src')->text(),
             'content' =>fetchNotePage($url)
         ];
-        //TODO fetch note page
     }
 
     $comment = [];
