@@ -92,8 +92,63 @@ function fetchNote($id)
     foreach(pq('.cover_tags a') as $tag)
     {
         $cover['tag'][] = [
-            'url' => $tag->attr('href'),
-            'name' => $tag->text(),
+            'url' => pq($tag)->attr('href'),
+            'name' => pq($tag)->text(),
         ];
     }
+    $cover['profile'] = [] ;
+    $cover['profile']['url'] = pq('.cover_profile a')->attr('href');
+    $cover['profile']['name'] = trim(pq('.profile_name')->text());
+    $cover['profile']['photo'] = pq('.profile_photo img')->attr('src');
+    $cover['profile']['date'] = trim(pq('.profile_meta .date')->text());
+
+    $cover['view'] = trim(pq('.cover_view')->text());
+    $cover['metoo_count'] = trim(pq('.cover_metoo .count')->text());
+    $cover['comment_count'] = trim(pq('.cover_comment  .count')->text());
+    $cover['source'] = trim(pq('.sub_source  .src')->text());
+
+    $page = [];
+    foreach(pq('.note_list .list_item') as $item)
+    {
+        $row = pq($item);
+        $url = $row->find('.list_text a')->attr('href');
+        $page[] = [
+            'order' => trim($row->find('.list_order')->text()),
+            'text' => trim($row->find('.list_text .text')->html()),
+            'url' => $url,
+            'image' => $row->find('.list_image img')->attr('src'),
+            'image_src' => $row->find('.list_image .list_source .src')->text(),
+            'content' =>fetchNotePage($url)
+        ];
+        //TODO fetch note page
+    }
+
+    $comment = [];
+    foreach(pq('.comment_list .list_item') as $item)
+    {
+        $row = pq($item);
+        $comment[] = [
+            'text' =>  $row->find('.commentText')->text(),
+            'username' => $row->find('.meta_data_wrap .username')->text(),
+            'date' => $row->find('.meta_data_wrap .date')->text(),
+
+        ];
+    }
+
+
+    return compact('id','banner','cover','page','comment');
+}
+
+function fetchNotePage($path)
+{
+    $url = 'http://lineq.tw';
+    $client = new \GuzzleHttp\Client();
+    $res = $client->request('GET', $url.$path);
+    $html = phpQuery::newDocument($res->getBody());
+    $content = [];
+    $content['image'] = pq('.content_image img')->attr('src');
+    $content['image_src'] = pq('.content_image .content_source')->text();
+    $content['text'] = pq('.content_text .text')->html();
+
+    return $content;
 }

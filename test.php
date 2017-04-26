@@ -1,4 +1,4 @@
 <?php
 require './fetchSingle.php';
 
-var_dump(fetchQ($argv[1]));
+var_dump(fetchNote($argv[1]));

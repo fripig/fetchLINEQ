@@ -16,6 +16,11 @@ foreach($all_q as $q)
         $data = fetchQ($id);
         file_put_contents('q/single/'.$id.'.json',json_encode($data));
     }
+    if(count($temp) >1 && $temp[1] == 'note'){
+        $id = $temp[2];
+        $data = fetchNote($id);
+        file_put_contents('note/'.$id.'.json',json_encode($data));
+    }
 
 }
 
