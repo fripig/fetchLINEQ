@@ -74,3 +74,26 @@ function getAnswer($target)
 
         return $row;
 }
+
+function fetchNote($id)
+{
+    $url = 'http://lineq.tw';
+    $client = new \GuzzleHttp\Client();
+    $res = $client->request('GET', $url.'/note/'.$id);
+    $html = phpQuery::newDocument($res->getBody());
+
+    $banner = [];
+    $banner['ico_pickup'] = pq('.banner_title .ico_pickup')->text();
+    $banner['title'] = pq('.banner_title .title')->text();
+
+    $cover = [];
+    $cover['title'] = pq('.cover_title')->text();
+    $cover['tag'] = [];
+    foreach(pq('.cover_tags a') as $tag)
+    {
+        $cover['tag'][] = [
+            'url' => $tag->attr('href'),
+            'name' => $tag->text(),
+        ];
+    }
+}
