@@ -11,6 +11,7 @@ class GCSFile
     protected $bucket;
     protected $adapter;
     protected $filesystem;
+    protected $file_temp = null;
 
     public function __construct()
     {
@@ -46,12 +47,15 @@ class GCSFile
     public function fetchImg($fromUrl)
     {
 
+
             try {
                 $client = new \GuzzleHttp\Client();
                 $response = $client->get($fromUrl);
-                return $response->getBody();
+                $this->file_temp = $response->getBody();
+                return $this;
             } catch (Exception $e) {
                 // Log the error or something
+                $this->file_temp = false;
                 return false;
             }
 
