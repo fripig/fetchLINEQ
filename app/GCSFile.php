@@ -38,7 +38,7 @@ class GCSFile
         return $this->filesystem->update($path, $content);
     }
 
-    public function writeOnce($path,$content)
+    public function writeOnce($path,$content=null)
     {
         if(!$this->filesystem->has($path)){
             return $this->filesystem->write($path, $content);
