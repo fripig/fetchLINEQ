@@ -53,7 +53,12 @@ class GCSFile
 
             try {
                 $client = new \GuzzleHttp\Client();
-                $response = $client->get('http://lineq.tw'.$fromUrl);
+                if(strpos($fromUrl,'http')!== false){
+                    $response = $client->get('http://lineq.tw'.$fromUrl);
+                } else {
+                    $response = $client->get($fromUrl);
+                }
+
                 $this->file_temp = $response->getBody()->getContents();
                 $this->writeOnce($fromUrl);
                 return $this;
