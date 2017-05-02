@@ -43,19 +43,17 @@ class GCSFile
         return 0;
     }
 
-    public function fetchImg()
+    public function fetchImg($fromUrl)
     {
-        function copyRemote($fromUrl, $toFile) {
+
             try {
                 $client = new \GuzzleHttp\Client();
-                $response = $client->get($fromUrl)
-                    ->setResponseBody($toFile)
-                    ->send();
-                return true;
+                $response = $client->get($fromUrl);
+                return $response->getBody();
             } catch (Exception $e) {
                 // Log the error or something
                 return false;
             }
-        }
+
     }
 }
