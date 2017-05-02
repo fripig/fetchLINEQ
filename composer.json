@@ -1,9 +1,11 @@
 {
-    "name": "fripig/fetch-lineq",
-    "description": "fetch lineq",
-    "type": "project",
-    "require": {
-	        "electrolinux/phpquery": "^0.9.6",
-        "guzzlehttp/guzzle": "^6.2"
-	}
+  "name": "fripig/fetch-lineq",
+  "description": "fetch lineq",
+  "type": "project",
+  "require": {
+    "electrolinux/phpquery": "^0.9.6",
+    "guzzlehttp/guzzle": "^6.2",
+    "league/flysystem": "1.0.40",
+    "superbalist/flysystem-google-storage": "^5.0"
+  }
 }
