@@ -12,9 +12,10 @@ use phpQuery;
 
 class LINEQ
 {
-    public function __construct()
+    protected $GCS;
+    public function __construct(GCSFile $GCS)
     {
-        $GCS = new GCSFile();
+        $this->GCS = $GCS;
     }
 
     public function fetchQ($id)
@@ -30,6 +31,12 @@ class LINEQ
         $author['photo'] = pq('.question_header .header_photo img')->attr('src');
         $author['name'] = trim(pq('.question_header .header_name')->text());
         $author['time'] = pq('.question_header .header_time')->text();
+
+        if($img = $this->GCS->fetchImg($author['photo'])){
+            var_dump($img);
+            $this->GCS->write($author['photo']);
+
+        }
 
 
 
@@ -54,7 +61,7 @@ class LINEQ
 
         foreach(pq('.content_reply_featured .reply') as $band)
         {
-            $row = getAnswer($band);
+            $row = $this->getAnswer($band);
             $answer['band'][] = $row;
         }
 

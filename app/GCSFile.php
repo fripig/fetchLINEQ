@@ -25,8 +25,11 @@ class GCSFile
         $this->filesystem = new Filesystem($this->adapter);
     }
 
-    public function write($path,$content)
+    public function write($path,$content = null)
     {
+        if(empty($content)){
+            $content = $this->file_temp;
+        }
         return $this->filesystem->write($path, $content);
     }
 
@@ -50,8 +53,8 @@ class GCSFile
 
             try {
                 $client = new \GuzzleHttp\Client();
-                $response = $client->get($fromUrl);
-                $this->file_temp = $response->getBody();
+                $response = $client->get('http://lineq.tw'.$fromUrl);
+                $this->file_temp = $response->getBody()->getContents();
                 return $this;
             } catch (Exception $e) {
                 // Log the error or something
