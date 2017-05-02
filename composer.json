@@ -1,6 +1,9 @@
 {
+    "name": "fripig/fetch-lineq",
+    "description": "fetch lineq",
+    "type": "priject",
     "require": {
-        "electrolinux/phpquery": "^0.9.6",
+	        "electrolinux/phpquery": "^0.9.6",
         "guzzlehttp/guzzle": "^6.2"
-    }
+	}
 }
