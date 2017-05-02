@@ -4,7 +4,7 @@ $gcs = new \App\GCSFile();
 $LINEQ = new \App\LINEQ($gcs);
 
 
-$all_q = file_get_contents('q/hotanswer.json');
+$all_q = file_get_contents('q/pickup.json');
 
 $all_q = json_decode($all_q,true);
 
