@@ -1,11 +1,11 @@
 <?php
-require_once '../vendor/autoload.php';
+namespace App;
 
 use Google\Cloud\Storage\StorageClient;
 use League\Flysystem\Filesystem;
 use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
 
-class File
+class GCSFile
 {
     protected $storageClient;
     protected $bucket;
@@ -41,5 +41,21 @@ class File
         }
 
         return 0;
+    }
+
+    public function fetchImg()
+    {
+        function copyRemote($fromUrl, $toFile) {
+            try {
+                $client = new \GuzzleHttp\Client();
+                $response = $client->get($fromUrl)
+                    ->setResponseBody($toFile)
+                    ->send();
+                return true;
+            } catch (Exception $e) {
+                // Log the error or something
+                return false;
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
+require_once 'app/GCSFile.php';
 
 
 function fetchQ($id)

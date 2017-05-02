@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
-require './fetchSingle.php';
+
+$LINEQ = new \app\LINEQ();
 
 
 $all_q = file_get_contents('q/hotanswer.json');
@@ -13,22 +14,22 @@ foreach($all_q as $q)
     $temp = explode('/',$q['link']);
     if(count($temp) >1 && $temp[1] == 'q'){
         $id = $temp[2];
-        $data = fetchQ($id);
+        $data = $LINEQ->fetchQ($id);
         file_put_contents('q/single/'.$id.'.json',json_encode($data));
     }
     if(count($temp) >1 && $temp[1] == 'note'){
         $id = $temp[2];
-        $data = fetchNote($id);
+        $data = $LINEQ->fetchNote($id);
         file_put_contents('note/'.$id.'.json',json_encode($data));
     }
     if(count($temp) >1 && $temp[2] == 'q'){
         $id = $temp[3];
-        $data = fetchQ($id);
+        $data = $LINEQ->fetchQ($id);
         file_put_contents('q/single/'.$id.'.json',json_encode($data));
     }
     if(count($temp) >1 && $temp[2] == 'note'){
         $id = $temp[3];
-        $data = fetchNote($id);
+        $data = $LINEQ->fetchNote($id);
         file_put_contents('note/'.$id.'.json',json_encode($data));
     }
 }

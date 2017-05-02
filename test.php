@@ -1,4 +1,6 @@
 <?php
-require './fetchSingle.php';
+require 'vendor/autoload.php';
 
-var_dump(fetchNote($argv[1]));
+$LINEQ = new \App\LINEQ();
+
+var_dump($LINEQ->fetchQ($argv[1]));

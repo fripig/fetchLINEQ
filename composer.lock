@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "caad83d20925ebaacee837a96b5ed105",
     "content-hash": "b7683b384161c50a006eda48500fcd10",
     "packages": [
         {
@@ -45,7 +44,7 @@
             ],
             "description": "phpQuery is a server-side, chainable, CSS3 selector driven Document Object Model (DOM) API based on jQuery JavaScript Library",
             "homepage": "http://code.google.com/p/phpquery/",
-            "time": "2013-03-21 12:39:33"
+            "time": "2013-03-21T12:39:33+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -88,7 +87,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2016-07-18 04:51:16"
+            "time": "2016-07-18T04:51:16+00:00"
         },
         {
             "name": "google/auth",
@@ -136,7 +135,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2016-11-02 14:59:14"
+            "time": "2016-11-02T14:59:14+00:00"
         },
         {
             "name": "google/cloud",
@@ -223,7 +222,7 @@
                 "translation",
                 "vision"
             ],
-            "time": "2017-02-10 15:09:33"
+            "time": "2017-02-10T15:09:33+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -285,7 +284,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-02-28 22:50:30"
+            "time": "2017-02-28T22:50:30+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -336,7 +335,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20 10:07:11"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -401,7 +400,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20 17:10:46"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "league/flysystem",
@@ -484,7 +483,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-28 10:15:08"
+            "time": "2017-04-28T10:15:08+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -562,7 +561,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-03-13 07:08:03"
+            "time": "2017-03-13T07:08:03+00:00"
         },
         {
             "name": "psr/cache",
@@ -608,7 +607,7 @@
                 "psr",
                 "psr-6"
             ],
-            "time": "2016-08-06 20:24:11"
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "psr/http-message",
@@ -658,7 +657,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -705,7 +704,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "rize/uri-template",
@@ -749,7 +748,7 @@
                 "template",
                 "uri"
             ],
-            "time": "2017-02-21 15:25:22"
+            "time": "2017-02-21T15:25:22+00:00"
         },
         {
             "name": "superbalist/flysystem-google-storage",
@@ -796,7 +795,7 @@
                 }
             ],
             "description": "Flysystem adapter for Google Cloud Storage",
-            "time": "2017-04-03 13:23:49"
+            "time": "2017-04-03T13:23:49+00:00"
         }
     ],
     "packages-dev": [],
