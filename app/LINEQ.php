@@ -139,7 +139,7 @@ class LINEQ
                 'url' => $url,
                 'image' => $row->find('.list_image img')->attr('src'),
                 'image_src' => $row->find('.list_image .list_source .src')->text(),
-                'content' =>fetchNotePage($url)
+                'content' => $this->fetchNotePage($url)
             ];
             $this->GCS->fetchImg($row->find('.list_image img')->attr('src'));
         }
