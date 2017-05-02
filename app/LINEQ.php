@@ -31,12 +31,7 @@ class LINEQ
         $author['photo'] = pq('.question_header .header_photo img')->attr('src');
         $author['name'] = trim(pq('.question_header .header_name')->text());
         $author['time'] = pq('.question_header .header_time')->text();
-
-        if($img = $this->GCS->fetchImg($author['photo'])){
-            var_dump($img);
-            $this->GCS->write($author['photo']);
-
-        }
+        $this->GCS->fetchImg($author['photo']);
 
 
 
@@ -89,6 +84,7 @@ class LINEQ
         $row['status'] = trim($target->find('.reply_band_wrap')->text());
         $row['status_class'] = $target->find('.reply_band_wrap')->attr('class');
         $row['author']['photo'] = $target->find('.header_photo > a > img')->attr('src');
+        $this->GCS->fetchImg($row['author']['photo']);
         $row['author']['link'] = $target->find('.header_photo > a')->attr('href');
         $row['author']['name'] = trim($target->find('.reply_info_name a')->text());
         $row['time'] = $target->find('.reply_info_sub .sub_date')->text();
@@ -124,6 +120,7 @@ class LINEQ
         $cover['profile']['url'] = pq('.cover_profile a')->attr('href');
         $cover['profile']['name'] = trim(pq('.profile_name')->text());
         $cover['profile']['photo'] = pq('.profile_photo img')->attr('src');
+        $this->GCS->fetchImg($cover['profile']['photo']);
         $cover['profile']['date'] = trim(pq('.profile_meta .date')->text());
 
         $cover['view'] = trim(pq('.cover_view')->text());
@@ -144,6 +141,7 @@ class LINEQ
                 'image_src' => $row->find('.list_image .list_source .src')->text(),
                 'content' =>fetchNotePage($url)
             ];
+            $this->GCS->fetchImg($row->find('.list_image img')->attr('src'));
         }
 
         $comment = [];
@@ -170,6 +168,7 @@ class LINEQ
         $html = phpQuery::newDocument($res->getBody());
         $content = [];
         $content['image'] = pq('.content_image img')->attr('src');
+        $this->GCS->fetchImg($content['image']);
         $content['image_src'] = pq('.content_image .content_source')->text();
         $content['text'] = pq('.content_text .text')->html();
 

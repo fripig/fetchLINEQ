@@ -55,6 +55,7 @@ class GCSFile
                 $client = new \GuzzleHttp\Client();
                 $response = $client->get('http://lineq.tw'.$fromUrl);
                 $this->file_temp = $response->getBody()->getContents();
+                $this->writeOnce($fromUrl);
                 return $this;
             } catch (Exception $e) {
                 // Log the error or something
