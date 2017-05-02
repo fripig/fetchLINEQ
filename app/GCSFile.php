@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Google\Cloud\Storage\StorageClient;
@@ -25,22 +26,22 @@ class GCSFile
         $this->filesystem = new Filesystem($this->adapter);
     }
 
-    public function write($path,$content = null)
+    public function write($path, $content = null)
     {
-        if(empty($content)){
+        if (empty($content)) {
             $content = $this->file_temp;
         }
         return $this->filesystem->write($path, $content);
     }
 
-    public function update($path,$content)
+    public function update($path, $content)
     {
         return $this->filesystem->update($path, $content);
     }
 
-    public function writeOnce($path,$content=null)
+    public function writeOnce($path, $content = null)
     {
-        if(!$this->filesystem->has($path)){
+        if (!$this->filesystem->has($path)) {
             return $this->filesystem->write($path, $content);
         }
 
@@ -51,22 +52,22 @@ class GCSFile
     {
 
 
-            try {
-                $client = new \GuzzleHttp\Client();
-                if(strpos($fromUrl,'http')!== false){
-                    $response = $client->get('http://lineq.tw'.$fromUrl);
-                } else {
-                    $response = $client->get($fromUrl);
-                }
-
-                $this->file_temp = $response->getBody()->getContents();
-                $this->writeOnce($fromUrl);
-                return $this;
-            } catch (Exception $e) {
-                // Log the error or something
-                $this->file_temp = false;
-                return false;
+        try {
+            $client = new \GuzzleHttp\Client();
+            if (strpos($fromUrl, 'http') !== false) {
+                $response = $client->get($fromUrl);
+            } else {
+                $response = $client->get('http://lineq.tw' . $fromUrl);
             }
+
+            $this->file_temp = $response->getBody()->getContents();
+            $this->writeOnce($fromUrl, $this->file_temp);
+            return $this;
+        } catch (Exception $e) {
+            // Log the error or something
+            $this->file_temp = false;
+            return false;
+        }
 
     }
 }
