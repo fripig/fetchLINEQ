@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
-
-$LINEQ = new \app\LINEQ();
+$gcs = new \App\GCSFile();
+$LINEQ = new \app\LINEQ($gcs);
 
 
 $all_q = file_get_contents('q/hotanswer.json');
