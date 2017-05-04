@@ -48,7 +48,7 @@ class GCSFile
         return 0;
     }
 
-    public function fetchImg($fromUrl)
+    public function fetchImg($fromUrl, $debug = true)
     {
 
 
@@ -59,7 +59,9 @@ class GCSFile
             } else {
                 $response = $client->get('http://lineq.tw' . $fromUrl);
             }
-
+            if($debug){
+                echo $fromUrl."\n";
+            }
             $this->file_temp = $response->getBody()->getContents();
             $this->writeOnce($fromUrl, $this->file_temp);
             return $this;
