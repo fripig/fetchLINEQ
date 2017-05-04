@@ -53,7 +53,10 @@ class GCSFile
         if(empty($fromUrl)) return false;
 
         try {
-            $client = new \GuzzleHttp\Client();
+            $client = new \GuzzleHttp\Client([
+                'connect_timeout' => 3.14,
+                'timeout' => 3.14
+            ]);
             if (strpos($fromUrl, 'http') !== false) {
                 $response = $client->get($fromUrl);
             } else {
