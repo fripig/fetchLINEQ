@@ -50,7 +50,7 @@ class GCSFile
 
     public function fetchImg($fromUrl, $debug = true)
     {
-
+        if(empty($fromUrl)) return false;
 
         try {
             $client = new \GuzzleHttp\Client();
