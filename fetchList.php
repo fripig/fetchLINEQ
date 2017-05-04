@@ -1,7 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-$gcs = new \App\GCSFile();
-$LINEQ = new \App\LINEQ($gcs);
+
 
 
 $all_q = file_get_contents('q/pickup.json');
@@ -10,6 +9,8 @@ $all_q = json_decode($all_q,true);
 
 foreach($all_q as $q)
 {
+    $gcs = new \App\GCSFile();
+    $LINEQ = new \App\LINEQ($gcs);
     echo $q['link']."\n";
     $temp = explode('/',$q['link']);
     if(count($temp) >1 && $temp[1] == 'q'){
