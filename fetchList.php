@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-
+$file = $argv[1] ?? 'q/pickup.json' ;
 
 $all_q = file_get_contents('q/pickup.json');
 
