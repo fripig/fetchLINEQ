@@ -16,22 +16,31 @@ foreach($all_q as $q)
     if(count($temp) >1 && $temp[1] == 'q'){
         $id = $temp[2];
         $data = $LINEQ->fetchQ($id);
-        file_put_contents('q/single/'.$id.'.json',json_encode($data));
+        if($data){
+            file_put_contents('q/single/'.$id.'.json',json_encode($data));
+        }
+
     }
     if(count($temp) >1 && $temp[1] == 'note'){
         $id = $temp[2];
         $data = $LINEQ->fetchNote($id);
-        file_put_contents('note/'.$id.'.json',json_encode($data));
+        if($data) {
+            file_put_contents('note/' . $id . '.json', json_encode($data));
+        }
     }
     if(count($temp) >1 && $temp[2] == 'q'){
         $id = $temp[3];
         $data = $LINEQ->fetchQ($id);
-        file_put_contents('q/single/'.$id.'.json',json_encode($data));
+        if($data) {
+            file_put_contents('q/single/' . $id . '.json', json_encode($data));
+        }
     }
     if(count($temp) >1 && $temp[2] == 'note'){
         $id = $temp[3];
         $data = $LINEQ->fetchNote($id);
-        file_put_contents('note/'.$id.'.json',json_encode($data));
+        if($data) {
+            file_put_contents('note/' . $id . '.json', json_encode($data));
+        }
     }
 }
 

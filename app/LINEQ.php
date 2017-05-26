@@ -23,6 +23,11 @@ class LINEQ
         $url = 'http://lineq.tw';
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', $url.'/q/'.$id);
+
+        if($res->getStatusCode()!==200) {
+            return false;
+        }
+
         $html = phpQuery::newDocument($res->getBody());
 
         $title = pq('h1')->text();
@@ -100,6 +105,9 @@ class LINEQ
         $url = 'http://lineq.tw';
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', $url.'/note/'.$id);
+        if($res->getStatusCode()!==200) {
+            return false;
+        }
         $html = phpQuery::newDocument($res->getBody());
 
         $banner = [];
